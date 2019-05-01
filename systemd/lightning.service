@@ -1,0 +1,15 @@
+[Unit]
+Description=Lightning service
+After=network.target
+
+[Service]
+ExecStart=/opt/lightning/bin/lightning -data=/opt/lightning/post -logs=/opt/lightning/logs
+ExecReload=/bin/kill -HUP $MAINPID
+WorkingDirectory=/opt/lightning
+StandardOutput=null
+KillMode=process
+Restart=on-failure
+RestartSec=3s
+
+[Install]
+WantedBy=multi-user.target
