@@ -13,7 +13,7 @@
                 <p class="post-info">[ {{.CreatedAt}} ] <a href="/article/{{.Name}}.html">{{.Title}}</a> [ {{tags .Tags}} ]</p>
                 {{end}}
                 {{end}}
-                {{if .archives}}
+                {{if not .archives}}
                 <div class="no-articles">你仿佛来到了知识的荒原...</div>
                 {{end}}
                 <p>--End Of File--</p>

@@ -11,7 +11,7 @@
                 <div class="post-tags">
                     <p>{{tags .article.Tags}}</p>
                 </div>
-                <p class="post-info">发表于<span>{{.article.CreatedAt}}</span>， 最后修改于<span>{{.article.ModifiedAt}}</span>，查看<a href="/article/{{.article.Name}}.md">本文Markdown版本</a></p>
+                <p class="post-info">发表于<span>{{.article.CreatedAt}}</span>， 最后修改于<span>{{.article.ModifiedAt}}</span>，查看<a href="/article/{{.article.Name}}.md" target="_blank">本文Markdown版本</a></p>
                 {{end}}
                 <div>{{.article.HTML}}</div>
                 <p>--End Of File--</p>
