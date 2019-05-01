@@ -13,13 +13,14 @@ import (
 )
 
 func main() {
-	var dataPath, logsPath string
+	var dataPath, logsPath, address string
 	flag.StringVar(&dataPath, "data", "post", "Path of article files, default post")
 	flag.StringVar(&logsPath, "logs", "", "Path of logs file, default stdout")
+	flag.StringVar(&address, "bind", "127.0.0.1:8080", "Bind address, default 127.0.0.1:8080")
 	flag.Parse()
 	logs.InitLogs(logsPath)
 	article.LoadArticles(dataPath)
-	http.StartHTTPService()
+	http.StartHTTPService(address)
 
 	ch := make(chan os.Signal)
 	signal.Notify(ch, syscall.SIGHUP, syscall.SIGINT, syscall.SIGKILL, syscall.SIGTERM)

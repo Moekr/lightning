@@ -11,7 +11,7 @@ import (
 	"github.com/Moekr/lightning/util/algo"
 )
 
-func StartHTTPService() {
+func StartHTTPService(address string) {
 	m := macaron.New()
 	if os.Getenv("LIGHTNING_DEV") != "" {
 		m.Use(macaron.Logger())
@@ -45,7 +45,6 @@ func StartHTTPService() {
 	m.InternalServerError(handleInternalServerError)
 
 	go func() {
-		address := "0.0.0.0:8080"
 		if err := http.ListenAndServe(address, m); err != nil {
 			panic(err)
 		}
