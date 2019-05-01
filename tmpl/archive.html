@@ -1,0 +1,26 @@
+{{define "archive"}}
+<!DOCTYPE html>
+<html>
+    {{template "head" .}}
+    <body>
+        {{template "header" .}}
+        <div class="main">
+            <div class="post">
+                <h1 class="post-title">文章归档</h1>
+                {{range .archives}}
+                <h2>{{.Month}}</h2>
+                {{range .Articles}}
+                <p class="post-info">[ {{.CreatedAt}} ] <a href="/article/{{.Name}}.html">{{.Title}}</a> [ {{tags .Tags}} ]</p>
+                {{end}}
+                {{end}}
+                {{if .archives}}
+                <div class="no-articles">你仿佛来到了知识的荒原...</div>
+                {{end}}
+                <p>--End Of File--</p>
+                {{template "footer" .}}
+            </div>
+        </div>
+        {{template "script" .}}
+    </body>
+</html>
+{{end}}

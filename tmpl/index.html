@@ -1,0 +1,16 @@
+{{define "index"}}
+<!DOCTYPE html>
+<html>
+    {{template "head" .}}
+    <body>
+        {{template "header" .}}
+        <div class="main">
+            <div class="index">
+                {{template "articles" .}}
+                {{template "footer" .}}
+            </div>
+        </div>
+        {{template "script" .}}
+    </body>
+</html>
+{{end}}

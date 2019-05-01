@@ -1,0 +1,26 @@
+{{define "article"}}
+<!DOCTYPE html>
+<html>
+    {{template "head" .}}
+    <body>
+        {{template "header" .}}
+        <div class="main">
+            <div class="post">
+                <h1 class="post-title">{{.article.Title}}</h1>
+                {{if not .article.IsPage}}
+                <div class="post-tags">
+                    <p>{{tags .article.Tags}}</p>
+                </div>
+                <p class="post-info">发表于<span>{{.article.CreatedAt}}</span>， 最后修改于<span>{{.article.ModifiedAt}}</span>，查看<a href="/article/{{.article.Name}}.md">本文Markdown版本</a></p>
+                {{end}}
+                <div>{{.article.HTML}}</div>
+                <p>--End Of File--</p>
+                <p>文章采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC-BY-NC-SA 4.0 国际</a>创作许可协议，未经本人同意禁止转载本文内容，转载请注明文章出处。</p>
+                <div id="disqus_thread"></div>
+                {{template "footer" .}}
+            </div>
+        </div>
+        {{template "script" .}}
+    </body>
+</html>
+{{end}}

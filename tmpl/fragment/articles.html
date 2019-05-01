@@ -1,0 +1,50 @@
+{{define "articles"}}
+<div>
+    {{range .articles}}
+    <div class="article">
+        <h1 class="post-title">
+            <a href="/article/{{.Name}}.html">{{.Title}}</a>
+        </h1>
+        <div class="post-date">
+            <p>{{.CreatedAt}}</p>
+        </div>
+        <div class="post-summary">
+            <p>{{.Summary}}</p>
+        </div>
+        <div>
+            <a href="/article/{{.Name}}.html">继续阅读</a>
+        </div>
+    </div>
+    {{end}}
+    {{if not .articles}}
+    <div class="no-articles">你仿佛来到了知识的荒原...</div>
+    {{end}}
+    <div class="pagination">
+        <div class="prev-page">
+            {{if .page.IsFirst}}
+            <a>上一页</a>
+            {{else}}
+                {{if .query}}
+                <a href="/search.html?q={{.query}}&p={{dec .page.Number}}">上一页</a>
+                {{else}}
+                <a href="/search.html?p={{dec .page.Number}}">上一页</a>
+                {{end}}
+            {{end}}
+        </div>
+        <div class="total-page">
+            <span>第 {{.page.Number}} 页 / 共 {{.page.Count}} 页</span>
+        </div>
+        <div class="next-page">
+            {{if .page.IsLast}}
+            <a>下一页</a>
+            {{else}}
+                {{if .query}}
+                <a href="/search.html?q={{.query}}&p={{inc .page.Number}}">下一页</a>
+                {{else}}
+                <a href="/search.html?p={{inc .page.Number}}">下一页</a>
+                {{end}}
+            {{end}}
+        </div>
+    </div>
+</div>
+{{end}}

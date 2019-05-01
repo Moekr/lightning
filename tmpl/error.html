@@ -1,0 +1,19 @@
+{{define "error"}}
+<!DOCTYPE html>
+<html>
+    {{template "head" .}}
+    <body>
+        {{template "header" .}}
+        <div class="main">
+            <div class="index">
+                <h1 class="error-title">Oops，似乎出现了一些问题……</h1>
+                <p>错误代码：{{.code}}</p>
+                <p>错误信息：{{.message}}</p>
+                <p><a href="/">返回首页</a></p>
+                {{template "footer" .}}
+            </div>
+        </div>
+        {{template "script" .}}
+    </body>
+</html>
+{{end}}
