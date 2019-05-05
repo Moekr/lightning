@@ -24,13 +24,5 @@ func main() {
 
 	ch := make(chan os.Signal)
 	signal.Notify(ch, syscall.SIGHUP, syscall.SIGINT, syscall.SIGKILL, syscall.SIGTERM)
-	for s := range ch {
-		if s == syscall.SIGHUP {
-			logs.Info("[Lightning] received signal %v, reload data...", s)
-			article.LoadArticles(dataPath)
-		} else {
-			_, _ = fmt.Fprintf(os.Stderr, "Received signal %v, exit...\n", s)
-			break
-		}
-	}
+	_, _ = fmt.Fprintf(os.Stderr, "Received signal %v, exit...\n", <-ch)
 }

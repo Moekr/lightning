@@ -35,10 +35,6 @@ func GetStore() *Store {
 }
 
 func LoadArticles(dataPath string) {
-	previous := GetStore()
-	if previous != nil {
-		defer previous.searcher.Close()
-	}
 	store := &Store{
 		dirPath: dataPath,
 	}

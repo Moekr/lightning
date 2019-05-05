@@ -4,7 +4,6 @@ After=network.target
 
 [Service]
 ExecStart=/opt/lightning/bin/lightning -data=/opt/lightning/post -logs=/opt/lightning/logs -bind=127.0.0.1:8080
-ExecReload=/bin/kill -HUP $MAINPID
 WorkingDirectory=/opt/lightning
 StandardOutput=null
 KillMode=process
